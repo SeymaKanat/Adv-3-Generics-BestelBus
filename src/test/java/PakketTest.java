@@ -1,12 +1,12 @@
 import model.Pakket;
-import model.PakkettenBus;
+import model.BestelBus;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class PakketTest {
-    private PakkettenBus testBus;
+    private BestelBus testBus;
 
     @Test
     public void laadPakketMetNegatieveWaardeWeigeren() {
@@ -40,7 +40,7 @@ public class PakketTest {
 
 
     private void maakBus() {
-        testBus = new PakkettenBus("Rode bus", 40);
+        testBus = new BestelBus("Rode bus", 40);
     }
 
 }
