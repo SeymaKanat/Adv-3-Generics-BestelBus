@@ -3,12 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BestelBus <T extends  Weegbaar> {
+public class BestelBus <L extends  Weegbaar> {
 
     private String naam;
     private int totaalGewicht;
     private int maximumGewicht;
-    private List<Pakket> lading;
+    private List<L> lading;
 
     public BestelBus(String naam, int maximumGewicht) {
         this.naam = naam;
@@ -17,35 +17,37 @@ public class BestelBus <T extends  Weegbaar> {
         this.lading = new ArrayList<>();
     }
 
-    public void laadPakket(Pakket pakket) {
-        if (pakket.getGewicht() >= 0 && (totaalGewicht + pakket.getGewicht()) <= maximumGewicht) {
-            lading.add(pakket);
-            totaalGewicht += pakket.getGewicht();
+    public void laadVoorwerp(L voorwerp) {
+     if (voorwerp.getGewicht() < 0) {
+         System.out.println("Voorwerp heeft verkeerd gewicht.");
+         return;
+     }
+     if (totaalGewicht + voorwerp.getGewicht() > maximumGewicht) {
+         System.out.println("Voorwerp kan niet geladen, bus raakt overbelast.");
+     } else {
+         lading.add(voorwerp);
+         totaalGewicht += voorwerp.getGewicht();
+     }
+    }
+
+    private L zoekZwaarstePakket(int index) {
+        if (index == lading.size()) {
+            return lading.get(index - 1);
+        }
+        L zwaarste = zoekZwaarstePakket(index + 1);
+        if (lading.get(index).getGewicht() >
+                zwaarste.getGewicht()) {
+            return lading.get(index);
+        } else {
+            return zwaarste;
         }
     }
 
-
-    public List<Pakket> getLading() {
+    public List<L> getLading() {
         return lading;
     }
 
     public int getTotaalGewicht() {
         return totaalGewicht;
     }
-
-    public Pakket zoekZwaarstePakket() { // returns the heaviest package from a list of packages
-        if (lading.isEmpty()) {
-            return null; // Geen pakketten in de bus
-        }
-        Pakket zwaarstaPakket = lading.get(0);
-        for (Pakket pakket : lading) {
-            if (pakket.getGewicht() > zwaarstaPakket.getGewicht()) {
-                zwaarstaPakket = pakket;
-            }
-
-        }
-        return zwaarstaPakket;
-    }
-
-
 }

@@ -16,10 +16,6 @@ public class Pakket  implements Weegbaar{
         return gewicht;
     }
 
-    public boolean kanWordenGeladen() {
-        return gewicht >= 0; // Pakket kan worden geladen als het gewicht niet negatief is
-    }
-
     @Override
     public String toString() {
         return String.format("{Kind: %s; cadeau: %s; gewicht: %d}", naamVanKind, cadeau, gewicht);
