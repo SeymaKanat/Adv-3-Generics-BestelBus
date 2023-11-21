@@ -1,6 +1,6 @@
 package model;
 
-public class Pakket {
+public class Pakket  implements Weegbaar{
 
     private String naamVanKind;
     private String cadeau;
@@ -14,6 +14,10 @@ public class Pakket {
 
     public int getGewicht() {
         return gewicht;
+    }
+
+    public boolean kanWordenGeladen() {
+        return gewicht >= 0; // Pakket kan worden geladen als het gewicht niet negatief is
     }
 
     @Override

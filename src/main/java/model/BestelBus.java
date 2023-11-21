@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BestelBus {
+public class BestelBus <T extends  Weegbaar> {
 
     private String naam;
     private int totaalGewicht;
