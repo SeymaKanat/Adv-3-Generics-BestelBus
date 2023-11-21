@@ -1,6 +1,6 @@
 package model;
 
-public class Pakket  implements Weegbaar{
+public class Pakket  implements  TeLadenVoorwerp{
 
     private String naamVanKind;
     private String cadeau;
@@ -12,6 +12,7 @@ public class Pakket  implements Weegbaar{
         this.gewicht = gewicht;
     }
 
+    @Override
     public int getGewicht() {
         return gewicht;
     }
@@ -20,4 +21,6 @@ public class Pakket  implements Weegbaar{
     public String toString() {
         return String.format("{Kind: %s; cadeau: %s; gewicht: %d}", naamVanKind, cadeau, gewicht);
     }
+
+
 }

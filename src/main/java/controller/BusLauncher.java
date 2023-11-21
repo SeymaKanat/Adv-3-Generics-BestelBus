@@ -17,7 +17,13 @@ public class BusLauncher {
         for (Pakket p : lijstVanBestand) {
             kuBus.laadPakket(p);
         }
+        System.out.println(kuBus.zoekZwaarstePakket());
 
+        BestelBus<Pakket> kwiBus = new BestelBus<>("blue bus", 160);
+        for (Pakket p : lijstVanBestand) {
+            kwiBus.laadPakket(p);
+        }
+        System.out.println(kwiBus.zoekZwaarstePakket());
 
 
     }
